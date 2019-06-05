@@ -1,0 +1,23 @@
+{
+  "name": "CS290 Final App",
+  "version": "1.0.0",
+  "description": "Web application",
+  "main": "server.js",
+  "test": "echo \"Error: no test specified\" && exit 1",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-sp19/final-project-cs290-final-project-app.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-sp19/final-project-cs290-final-project-app/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-sp19/final-project-cs290-final-project-app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-handlebars": "^3.1.0",
+    "handlebars": "^4.1.2"
+  },
+  "devDependencies": {}
+}
