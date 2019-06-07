@@ -1,0 +1,14 @@
+body {
+    margin: 0;
+    background-color: #dadada;
+}
+
+header {
+    background-color: rgb(158, 4, 4);
+    color: white;
+    margin: 0;
+}
+
+h1 {
+    color: blue;
+}
