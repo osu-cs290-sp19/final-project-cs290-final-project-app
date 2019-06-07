@@ -1,9 +1,14 @@
 {
-  "name": "CS290 Final App",
+  "name": "CS290-Final-App",
   "version": "1.0.0",
   "description": "Web application",
   "main": "server.js",
-  "test": "echo \"Error: no test specified\" && exit 1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "build": "handlebars views/partials/.handlebars -f public/tobechangedTemplate.js",
+    "prestart": "npm run build"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/osu-cs290-sp19/final-project-cs290-final-project-app.git"
