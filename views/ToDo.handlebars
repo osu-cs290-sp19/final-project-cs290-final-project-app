@@ -3,3 +3,9 @@
     <p class="lead"></p>
     <hr class="my-4">
 </div>
+
+<main class='todoContainer'> 
+    {{#each todos}}
+        {{>todo}}
+    {{/each}}
+</main>
