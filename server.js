@@ -17,6 +17,10 @@ app.get('/', function(req, res, next) {
     res.status(200).render('home');
 });
 
+app.get('/todo', function(req, res, next) {
+  res.status(200).render('ToDo');
+});
+
 app.listen(port, function () {
     console.log("== Server listening on port", port);
 });
