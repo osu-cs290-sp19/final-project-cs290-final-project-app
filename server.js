@@ -4,6 +4,7 @@ var exphbs = require('express-handlebars');
 
 // var twitData = require('./twitData') // no twit data??
 
+var bodyParser = require('body-parser');
 var MongoClient = require('mongodb').MongoClient;
 
 var app = express();
