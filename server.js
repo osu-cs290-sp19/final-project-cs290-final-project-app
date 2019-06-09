@@ -12,6 +12,8 @@ var handlebars = require('express-handlebars');
 var path = require('path');
 var port = process.env.PORT || 3000;
 
+var todoData = require('./todoData');
+
 // var MongoClient = require('mongodb').MongoClient;
 // var mongoHost = process.env.MONGO_HOST;
 // var mongoPort = process.env.MONGO_PORT || 27017;
@@ -31,7 +33,9 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/todo', function(req, res, next) {
-  res.status(200).render('ToDo');
+  res.status(200).render('ToDo', {
+    todos: todoData
+  });
 });
 
 // MongoClient.connect(mongoUrl, function (err, client) {
