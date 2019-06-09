@@ -12,3 +12,19 @@ header {
 h1 {
     color: blue;
 }
+
+.todoContainer {
+    margin: 50px 10%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.todo-item {
+    flex: 0 1 28%;
+    display: flex;
+    margin: 2px;
+    padding: 20px;
+    border: 1px solid #dadada;
+    border-radius: 2px;
+    background-color: #fff;
+}
