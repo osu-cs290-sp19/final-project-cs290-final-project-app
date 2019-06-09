@@ -1,7 +1,7 @@
 body {
     position: relative;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
     background-color: #dadada;
 }
 
@@ -40,4 +40,14 @@ h1 {
     width: 150px; 
     background-color: #ccc; 
     height: 100vh;
+    padding: 20px;
+}
+
+.jumbotron .next-to-side-bar{
+    position: relative;
+    left: 150px;
+}
+
+.todoContainer {
+    padding: 20px;
 }
