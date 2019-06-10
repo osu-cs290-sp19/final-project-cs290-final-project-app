@@ -24,4 +24,18 @@ function hideCreateTodo() {
 
     modal.classList.add('hidden');
     createTodo.classList.add('hidden');
+
+    resetfields();
+}
+
+function resetfields() {
+    console.log("supposed to reset fields, its not there yet");
+}
+
+var addTodoButton = document.querySelector('.modal-accept-button');
+addTodoButton.addEventListener('click', addNewTodo)
+
+function addNewTodo() {
+    console.log("addNewTodo");
+    hideCreateTodo();
 }
