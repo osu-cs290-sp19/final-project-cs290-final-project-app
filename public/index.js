@@ -3,7 +3,7 @@ var createTodoButton = document.getElementById('create-todo-button');
 createTodoButton.addEventListener('click', showCreateTodo);
 
 function showCreateTodo() {
-    console.log("showCreateTodo");
+    console.log("== showCreateTodo");
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
@@ -18,7 +18,7 @@ var cancelTodoButton = document.querySelector('.modal-cancel-button');
 cancelTodoButton.addEventListener('click', hideCreateTodo);
 
 function hideCreateTodo() {
-    console.log('hideCreateTodo');
+    console.log('== hideCreateTodo');
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
@@ -29,13 +29,27 @@ function hideCreateTodo() {
 }
 
 function resetfields() {
-    console.log("supposed to reset fields, its not there yet");
+    console.log("== resetfields");
+    
+    document.querySelector('#todo-title-input').value = "";
+    document.querySelector('#todo-date-input').value = "";
 }
 
 var addTodoButton = document.querySelector('.modal-accept-button');
 addTodoButton.addEventListener('click', addNewTodo)
 
 function addNewTodo() {
-    console.log("addNewTodo");
-    hideCreateTodo();
+    console.log("== addNewTodo");
+    
+    var title = document.querySelector('#todo-title-input').value.trim();
+    var date = document.querySelector('#todo-date-input').value.trim();
+
+    if (title == "" || date == "") {
+        alert("Both fields must be filled, before continuing");
+    } else {
+
+        hideCreateTodo();
+    }
+      
+
 }

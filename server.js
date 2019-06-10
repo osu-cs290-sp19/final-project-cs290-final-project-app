@@ -49,10 +49,6 @@ MongoClient.connect(mongoUrl, function (err, client) {
   });
 });
 
-// app.listen(port, function () {
-//     console.log("== Server listening on port", port);
-// });
-
 app.use(function(req,res){
   res.status(404);
   res.render('404');
