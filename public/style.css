@@ -39,11 +39,12 @@ h1 {
     float: left; 
     width: 150px; 
     background-color: #ccc; 
+    border: 1px solid grey;
     height: 100vh;
     padding: 20px;
 }
 
-.jumbotron .next-to-side-bar{
+.jumbotron.next-to-side-bar{
     position: relative;
     left: 150px;
 }
