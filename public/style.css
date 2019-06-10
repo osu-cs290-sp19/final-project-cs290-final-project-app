@@ -31,10 +31,6 @@ h1 {
     background-color: #fff;
 }
 
-.hidden {
-   display: none;
-}
-
 #sidebar { 
     float: left; 
     width: 150px; 
@@ -52,3 +48,8 @@ h1 {
 .todoContainer {
     padding: 20px;
 }
+
+.hidden {
+    display: none;
+}
+
