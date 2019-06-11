@@ -1,33 +1,35 @@
 <div id="sidebar">SIDEBAR
-  <button type="button" id="create-todo-button"><i class='new-todo'>Create Todo</i></button>
+  <button type="button" class="btn btn-primary" id="create-todo-button" data-toggle="modal" data-target="#myModal"><i class='new-todo'>Create Todo</i></button>
 </div>
 
-<div id="modal-backdrop" class="hidden"></div>
-<div id="create-todo-modal" class="hidden">
-    <div class="todo-containment">
-        <div class="modal-header">
-            <h3>New Todo:</h3>
-            <button type="button" class="modal-close-button">&times;</button>
-        </div>
-        <div class="modal-body">
-            <div class="todo-input-element">
-                <label for="todo-title-input">Title</label>
-                <textarea id="todo-title-input"></textarea>
-            </div>
-        </div>
-        <div class="todo-input-element">
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="ModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add Task</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <div class="todo-input-element">
+            <label for="todo-title-input">Title</label>
+            <input type="text" name="usertitle" id="todo-title-input">
             <label for="todo-date-input">Date</label>
-            <input type="text" id="todo-date-input">
+            <input type="date" name="duedate" id="todo-date-input">
         </div>
-        <div class="modal-footer">
-            <button type="button" class="modal-cancel-button">Cancel</button>
-            <button type="button" class="modal-accept-button">Add Todo</button>
-        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save</button>
+      </div>
     </div>
+  </div>
 </div>
 
 <div class="jumbotron next-to-side-bar">
-    <h1 class="display-4">Tasks Completed</h1>
+    <h1 class="display-4">Active Tasks</h1>
     <p class="lead"></p>
     <hr class="my-4">
 </div>

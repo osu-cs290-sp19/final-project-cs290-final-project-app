@@ -11,10 +11,6 @@ header {
     margin: 0;
 }
 
-h1 {
-    color: blue;
-}
-
 .todoContainer {
     margin: 50px 10%;
     display: flex;
