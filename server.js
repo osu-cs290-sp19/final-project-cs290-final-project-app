@@ -44,11 +44,49 @@ app.get('/', function(req, res, next) {
 });
 
 app.get('/todo', function(req, res, next) {
-  res.status(200).render('ToDo', {
-    todos: todoData
+  var todocollection = db.collection('todo');
+  todocollection.find({}).toArray(function (err, todo) {
+    if(err)
+    {
+      res.status(500).send({
+        error: "Error Fetching todos from Database"
+      });
+    }
+    else {
+      console.log("== todo:", todo);
+      res.status(200).render('ToDo', {
+        todos: todo
+      });
+    }
   });
+  
+  // res.status(200).render('ToDo', {
+  //   todos: todoData
+  // });
 });
 
+app.post('/todo', function(req, res, next) {
+  var todocollection = db.collection('todo');
+  todocollection.updateOne(
+    { title: todoTitle },
+    { date: date },
+    function( err, result)
+    {
+      if (err) {
+        res.status(500).send({
+          error: "Error adding new todo"
+        });
+      } else {
+        console.log("== update result:", result);
+        if (result.matchedCount > 0) {
+          res.status(200).send("Success");
+        } else {
+          next();
+        }
+      }
+    }
+  );
+});
 
 app.use(function(req,res){
   res.status(404);

@@ -1,5 +1,5 @@
 
-var createTodoButton = document.getElementById('create-todo-button');
+var createTodoButton = document.querySelector('.btn.btn-primary');
 createTodoButton.addEventListener('click', showCreateTodo);
 
 function showCreateTodo() {
@@ -43,12 +43,45 @@ addTodoButton.addEventListener('click', addNewTodo)
 function addNewTodo() {
     console.log("== addNewTodo");
     
-    var title = document.querySelector('#todo-title-input').value.trim();
+    var todoTitle = document.querySelector('#todo-title-input').value.trim();
     var date = document.querySelector('#todo-date-input').value.trim();
 
-    if (title == "" || date == "") {
+    console.log("**** title:", todoTitle);
+    console.log("**** date: ", date);
+
+    if (todoTitle == "" || date == "") {
         alert("Both fields must be filled, before continuing");
     } else {
+        var postRequest = new XMLHttpRequest();
+        var requestURL = '/todo';
+        postRequest.open('POST', requestURL);
+    
+        var requestBody = JSON.stringify({
+          title: todoTitle,
+          date: date
+        });
+
+        console.log("does this work?");
+        console.log('todoTitle: ', todoTitle);
+
+        postRequest.addEventListener('load', function (event) {
+            console.log("here? ", todoTitle);
+            if (event.target.status === 200) {
+              var todoTemplate = Handlebars.templates.todo;
+              var newTodoHTML = todoTemplate({
+                title: todoTitle,
+                date: date
+              });
+              var todoContainer = document.querySelector('.todoContainer');
+              todoContainer.insertAdjacentHTML('beforeend', newTodoHTML);
+            } else {
+              alert("Error storing photo: " + event.target.response);
+            }
+          });
+      
+          postRequest.setRequestHeader('Content-Type', 'application/json');
+          postRequest.send(requestBody);
+      
 
         hideCreateTodo();
     }
