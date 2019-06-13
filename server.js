@@ -52,7 +52,7 @@ app.post('/todo', function(req, res, next) {
     console.log(req.body.date);
     console.log(req.body.title);
     if(req.body.date){
-        todocollection.updateOne(
+        todocollection.insertOne(
             { _id: new ObjectID(req.params.id) },
             { $set: {title: req.body.title, date: req.body.date} },
             function( err, result)
@@ -62,8 +62,21 @@ app.post('/todo', function(req, res, next) {
                   error: "Error adding new todo"
                 });
               } else {
-                console.log("== update result:", result);
-                next();
+                    var todocollection = db.collection('todo');
+                      todocollection.find({}).toArray(function (err, todo) {
+                        if(err)
+                        {
+                          res.status(500).send({
+                            error: "Error Fetching todos from Database"
+                          });
+                        }
+                        else {
+                          console.log("== todo:", todo);
+                          res.status(200).render('ToDo', {
+                            todos: todo
+                          });
+                        }
+                      });
               }
             }
           );

@@ -67,7 +67,7 @@ function addNewTodo() {
         postRequest.addEventListener('load', function (event) {
             console.log("here? ", todoTitle);
             if (event.target.status === 200) {
-              var todoTemplate = handlebars.templates.todo;
+              var todoTemplate = Handlebars.templates.todo;
               var newTodoHTML = todoTemplate({
                 title: todoTitle,
                 date: date
