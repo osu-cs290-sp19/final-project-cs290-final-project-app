@@ -7,7 +7,7 @@ function showCreateTodo() {
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
-    // Bootstrap does this...
+    // Bootstrap does this
     // modal.classList.remove('hidden');
     // createTodo.classList.remove('hidden');
 }
@@ -23,7 +23,7 @@ function hideCreateTodo() {
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
-    // Bootstrap does this??
+    // Bootstrap does this
     // modal.classList.add('hidden');
     // createTodo.classList.add('hidden');
 

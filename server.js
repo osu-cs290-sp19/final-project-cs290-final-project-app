@@ -67,25 +67,33 @@ app.get('/todo', function(req, res, next) {
 
 app.post('/todo', function(req, res, next) {
   var todocollection = db.collection('todo');
-  todocollection.updateOne(
-    { title: todoTitle },
-    { date: date },
-    function( err, result)
-    {
-      if (err) {
-        res.status(500).send({
-          error: "Error adding new todo"
-        });
-      } else {
-        console.log("== update result:", result);
-        if (result.matchedCount > 0) {
-          res.status(200).send("Success");
-        } else {
-          next();
-        }
-      }
+    if(req.body.name && req.body.date){
+        var newtodo = {
+           title: req.body.title,
+           date: req.body.date
+        };
+        todocollection.updateOne(
+            { title: todoTitle },
+            { date: date },
+            function( err, result)
+            {
+              if (err) {
+                res.status(500).send({
+                  error: "Error adding new todo"
+                });
+              } else {
+                console.log("== update result:", result);
+                if (result.matchedCount > 0) {
+                  res.status(200).send("Success");
+                } else {
+                  next();
+                }
+              }
+            }
+          );
+    }else{
+        res.status(400).send("Req body missing name or date");
     }
-  );
 });
 
 app.use(function(req,res){
