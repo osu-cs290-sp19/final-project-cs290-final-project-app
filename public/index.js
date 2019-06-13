@@ -27,7 +27,7 @@ function hideCreateTodo() {
     // modal.classList.add('hidden');
     // createTodo.classList.add('hidden');
 
-    resetfields();
+    //resetfields();
 }
 
 function resetfields() {

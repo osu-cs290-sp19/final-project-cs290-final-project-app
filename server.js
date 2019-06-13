@@ -29,6 +29,8 @@ app.set('view engine', 'handlebars');
 app.use(bodyParser.json());
 app.use(express.static('public'));
 
+const ObjectID = require('mongodb').ObjectID
+
 MongoClient.connect(mongoUrl, function (err, client) {
   if (err) {
     console.log(mongoUrl);
@@ -42,6 +44,32 @@ MongoClient.connect(mongoUrl, function (err, client) {
 
 app.get('/', function(req, res, next) {
     res.status(200).render('home');
+});
+
+app.post('/todo', function(req, res, next) {
+    var todocollection = db.collection('todo');
+    console.log(req.params);
+    console.log(req.body.date);
+    console.log(req.body.title);
+    if(req.body.date){
+        todocollection.updateOne(
+            { _id: new ObjectID(req.params.id) },
+            { $set: {title: req.body.title, date: req.body.date} },
+            function( err, result)
+            {
+              if (err) {
+                res.status(500).send({
+                  error: "Error adding new todo"
+                });
+              } else {
+                console.log("== update result:", result);
+                next();
+              }
+            }
+          );
+    }else{
+        res.status(400).send("Req body missing name or date");
+    }
 });
 
 app.get('/todo', function(req, res, next) {
@@ -66,36 +94,6 @@ app.get('/todo', function(req, res, next) {
   // });
 });
 
-app.post('/todo', function(req, res, next) {
-    var todocollection = db.collection('todo');
-    console.log(req.body.date);
-    console.log
-    if(req.body.date){
-        var newtitle = req.body.todoTitle;
-        var newdate = req.body.date;
-        todocollection.updateOne(
-            { title: newtitle },
-            { date: newdate },
-            function( err, result)
-            {
-              if (err) {
-                res.status(500).send({
-                  error: "Error adding new todo"
-                });
-              } else {
-                console.log("== update result:", result);
-                if (result.matchedCount > 0) {
-                  res.status(200).send("Success");
-                } else {
-                  next();
-                }
-              }
-            }
-          );
-    }else{
-        res.status(400).send("Req body missing name or date");
-    }
-});
 
 app.use(function(req,res){
   res.status(404);
