@@ -26,6 +26,7 @@ var db = null;
 
 app.engine('handlebars', exphbs({ defaultLayout: 'main'}));
 app.set('view engine', 'handlebars');
+app.use(bodyParser.json());
 app.use(express.static('public'));
 
 MongoClient.connect(mongoUrl, function (err, client) {
@@ -66,15 +67,15 @@ app.get('/todo', function(req, res, next) {
 });
 
 app.post('/todo', function(req, res, next) {
-  var todocollection = db.collection('todo');
-    if(req.body.name && req.body.date){
-        var newtodo = {
-           title: req.body.title,
-           date: req.body.date
-        };
+    var todocollection = db.collection('todo');
+    console.log(req.body.date);
+    console.log
+    if(req.body.date){
+        var newtitle = req.body.todoTitle;
+        var newdate = req.body.date;
         todocollection.updateOne(
-            { title: todoTitle },
-            { date: date },
+            { title: newtitle },
+            { date: newdate },
             function( err, result)
             {
               if (err) {
