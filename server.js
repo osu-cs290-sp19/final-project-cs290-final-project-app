@@ -53,8 +53,9 @@ app.post('/todo', function(req, res, next) {
     console.log(req.body.title);
     if(req.body.date){
         todocollection.insertOne(
-            { _id: new ObjectID(req.params.id) },
-            { $set: {"title": req.body.title, "date": req.body.date} },
+            { _id: new ObjectID(req.params.id),
+            title: req.body.title,
+            date: req.body.date},
             function( err, result)
             {
               if (err) {
