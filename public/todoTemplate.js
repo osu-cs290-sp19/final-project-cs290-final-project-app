@@ -7,6 +7,10 @@ templates['todo'] = template({"compiler":[7,">= 4.0.0"],"main":function(containe
     + alias4(((helper = (helper = helpers.title || (depth0 != null ? depth0.title : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"title","hash":{},"data":data}) : helper)))
     + "\r\n        </p>\r\n        <p class=\"todo-date\">\r\n            Do by: \r\n            <a href=\"#\">"
     + alias4(((helper = (helper = helpers.date || (depth0 != null ? depth0.date : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"date","hash":{},"data":data}) : helper)))
-    + "</a>\r\n        </p>\r\n        <button type=\"button\" class=\"btn btn-success\">Done!</button>\r\n        <button type=\"button\" class=\"btn btn-danger\">Cancel</button>\r\n    </div>\r\n </article>";
+    + "</a>\r\n        </p>\r\n        <a type=\"button\" class=\"btn btn-success\" href='/todo/"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "'>Done!</a>\r\n        <a type=\"button\" class=\"btn btn-danger\" href='/todo/"
+    + alias4(((helper = (helper = helpers._id || (depth0 != null ? depth0._id : depth0)) != null ? helper : alias2),(typeof helper === alias3 ? helper.call(alias1,{"name":"_id","hash":{},"data":data}) : helper)))
+    + "'>Cancel</a>\r\n    </div>\r\n </article>";
 },"useData":true});
 })();

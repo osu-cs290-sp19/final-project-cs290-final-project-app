@@ -22,12 +22,12 @@ function hideCreateTodo() {
     console.log('== hideCreateTodo');
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
-
+    //document.getElementById('myModal').innerHTML= " aria-hidden='false' ";
     // Bootstrap does this
     // modal.classList.add('hidden');
     // createTodo.classList.add('hidden');
 
-    //resetfields();
+    resetfields();
 }
 
 function resetfields() {

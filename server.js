@@ -54,7 +54,7 @@ app.post('/todo', function(req, res, next) {
     if(req.body.date){
         todocollection.insertOne(
             { _id: new ObjectID(req.params.id) },
-            { $set: {title: req.body.title, date: req.body.date} },
+            { $set: {"title": req.body.title, "date": req.body.date} },
             function( err, result)
             {
               if (err) {
@@ -62,21 +62,7 @@ app.post('/todo', function(req, res, next) {
                   error: "Error adding new todo"
                 });
               } else {
-                    var todocollection = db.collection('todo');
-                      todocollection.find({}).toArray(function (err, todo) {
-                        if(err)
-                        {
-                          res.status(500).send({
-                            error: "Error Fetching todos from Database"
-                          });
-                        }
-                        else {
-                          console.log("== todo:", todo);
-                          res.status(200).render('ToDo', {
-                            todos: todo
-                          });
-                        }
-                      });
+                    res.redirect('/todo')
               }
             }
           );
@@ -107,6 +93,14 @@ app.get('/todo', function(req, res, next) {
   // });
 });
 
+app.get('/todo/:id', (req, res) => {
+    console.log("tryin to delete");
+    db.collection('todo').remove({_id: ObjectID( req.params.id)}, (err, result) => {
+    if (err) return console.log(err)
+    console.log(req.body)
+    res.redirect('/todo')
+  })
+})
 
 app.use(function(req,res){
   res.status(404);
