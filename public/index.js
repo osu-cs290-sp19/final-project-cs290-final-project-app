@@ -7,14 +7,15 @@ function showCreateTodo() {
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
-    modal.classList.remove('hidden');
-    createTodo.classList.remove('hidden');
+    // Bootstrap does this...
+    // modal.classList.remove('hidden');
+    // createTodo.classList.remove('hidden');
 }
 
-var closeTodoButton = document.querySelector('.modal-close-button');
+var closeTodoButton = document.querySelector('.close');
 closeTodoButton.addEventListener('click', hideCreateTodo);
 
-var cancelTodoButton = document.querySelector('.modal-cancel-button');
+var cancelTodoButton = document.querySelector('.btn-secondary');
 cancelTodoButton.addEventListener('click', hideCreateTodo);
 
 function hideCreateTodo() {
@@ -22,8 +23,9 @@ function hideCreateTodo() {
     var modal = document.querySelector('#modal-backdrop');
     var createTodo = document.querySelector('#create-todo-modal');
 
-    modal.classList.add('hidden');
-    createTodo.classList.add('hidden');
+    // Bootstrap does this??
+    // modal.classList.add('hidden');
+    // createTodo.classList.add('hidden');
 
     resetfields();
 }
@@ -31,11 +33,11 @@ function hideCreateTodo() {
 function resetfields() {
     console.log("== resetfields");
     
-    document.querySelector('#todo-title-input').value = "";
-    document.querySelector('#todo-date-input').value = "";
+    document.querySelector('#todo-title-input').value = null;
+    document.querySelector('#todo-date-input').value = null;
 }
 
-var addTodoButton = document.querySelector('.modal-accept-button');
+var addTodoButton = document.querySelector('.btn-primary.save');
 addTodoButton.addEventListener('click', addNewTodo)
 
 function addNewTodo() {
