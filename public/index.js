@@ -60,12 +60,7 @@ function addNewTodo() {
           title: todoTitle,
           date: date
         });
-
-        console.log("does this work?");
-        console.log('todoTitle: ', todoTitle);
-
         postRequest.addEventListener('load', function (event) {
-            console.log("here? ", todoTitle);
             if (event.target.status === 200) {
               var todoTemplate = Handlebars.templates.todo;
               var newTodoHTML = todoTemplate({
@@ -81,8 +76,6 @@ function addNewTodo() {
       
           postRequest.setRequestHeader('Content-Type', 'application/json');
           postRequest.send(requestBody);
-      
-
         hideCreateTodo();
     }
       

@@ -95,7 +95,7 @@ app.get('/todo', function(req, res, next) {
 
 app.get('/todo/:id', (req, res) => {
     console.log("tryin to delete");
-    db.collection('todo').remove({_id: ObjectID( req.params.id)}, (err, result) => {
+    db.collection('todo').deleteOne({_id: ObjectID( req.params.id)}, (err, result) => {
     if (err) return console.log(err)
     console.log(req.body)
     res.redirect('/todo')
