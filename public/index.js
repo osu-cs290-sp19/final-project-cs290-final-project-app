@@ -18,6 +18,7 @@ closeTodoButton.addEventListener('click', hideCreateTodo);
 var cancelTodoButton = document.querySelector('.btn-secondary');
 cancelTodoButton.addEventListener('click', hideCreateTodo);
 
+
 function hideCreateTodo() {
     console.log('== hideCreateTodo');
     var modal = document.querySelector('#modal-backdrop');
@@ -32,7 +33,6 @@ function hideCreateTodo() {
 
 function resetfields() {
     console.log("== resetfields");
-    
     document.querySelector('#todo-title-input').value = null;
     document.querySelector('#todo-date-input').value = null;
 }
